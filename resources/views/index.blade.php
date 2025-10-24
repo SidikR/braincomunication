@@ -1,0 +1,13 @@
+@extends('layouts.main')
+@section('content')
+    @include('partials.hero')
+    @include('partials.welcome')
+    @include('partials.kenapa')
+    @include('partials.fasilitas')
+    @include('partials.program')
+    @include('partials.about')
+    @include('partials.post')
+    @include('partials.testimoni')
+    @include('partials.action')
+    @include('partials.contact')
+@endsection

@@ -1,0 +1,9 @@
+@import "../../node_modules/aos/dist/aos.css";
+@import "../../node_modules/glightbox/dist/css/glightbox.min.css";
+@import "../../node_modules/swiper/swiper.min.css";
+@import "../../node_modules/animate.css/animate.min.css";
+@import "../../node_modules/bootstrap/dist/css/bootstrap.min.css";
+@import "../../node_modules/bootstrap-icons/font/bootstrap-icons.min.css";
+
+@import "../../public/assets/css/main.css";
+@import "../../public/assets/css/custom.css";

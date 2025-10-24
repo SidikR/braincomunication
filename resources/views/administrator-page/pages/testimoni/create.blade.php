@@ -1,0 +1,150 @@
+@extends('dashboard.layouts.main')
+@section('content')
+    <div class="page-inner">
+
+        {{-- Breadcrumbs --}}
+        <div class="page-header">
+            <ul class="breadcrumbs mb-3">
+                <li class="nav-home">
+                    <a href="{{ route('dashboard.' . Auth::user()->role . '.index') }}">
+                        <i class="icon-home text-primary"></i>
+                    </a>
+                </li>
+                <li class="separator">
+                    <i class="icon-arrow-right"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ route('dashboard.' . Auth::user()->role . '.testimoni.index') }}">Data Testimoni</a>
+                </li>
+                <li class="separator">
+                    <i class="icon-arrow-right"></i>
+                </li>
+                <li class="nav-item">
+                    <a href="#">{{ $data['page_name'] ?? '' }}</a>
+                </li>
+            </ul>
+        </div>
+
+        {{-- Konten --}}
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card">
+                    <div class="card-header d-flex justify-content-between">
+                        <h4 class="card-title">Tabel {{ $data['page_name'] ?? '' }}</h4>
+                    </div>
+                    <div class="card-body">
+                        <form action={{ route('dashboard.administrator.testimoni.store') }} method="post"
+                            enctype="multipart/form-data">
+                            @csrf
+                            @method('POST')
+
+                            <fieldset>
+                                <div class="d-flex row">
+
+                                    <div class="col-12">
+
+                                        <div class="col-12 d-flex justify-content-center align-items-center ">
+                                            {{-- image box field --}}
+                                            <div class="image text-center">
+                                                <div class="mb-3">
+                                                    <label for="image1" class="required mb-2">Foto Testimoner</label>
+                                                    <div id="imagePreviewBox">
+                                                        <figure class="image-preview">
+                                                            <img src="{{ old('image') ? asset(old('image')) : asset('assets-admin/images/images.png') }}"
+                                                                id="image1-display">
+                                                            <input type="hidden" name="image" id="image1"
+                                                                value="{{ old('image') }}">
+                                                        </figure>
+                                                    </div>
+                                                </div>
+                                                @error('image')
+                                                    <div class="text-danger ">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+
+                                                <button type="button" class="btn btn-primary mt-2 upload-button"
+                                                    id="button-image" data-input-id="image1">
+                                                    <i class="bi bi-cloud-arrow-up-fill"></i> Upload Foto
+                                                </button>
+
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="nama" class="form-label required">Nama</label>
+                                            <input type="text" id="nama"
+                                                class="form-control @error('nama') is-invalid @enderror" placeholder="Nama"
+                                                aria-required="true" aria-describedby="name_help" name="nama"
+                                                value="{{ old('nama') }}">
+                                            @error('nama')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="posisi" class="form-label required">Posisi</label>
+                                            <input type="text" id="posisi"
+                                                class="form-control @error('posisi') is-invalid @enderror"
+                                                placeholder="Posisi" aria-required="true" aria-describedby="name_help"
+                                                name="posisi" value="{{ old('posisi') }}">
+                                            @error('posisi')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="pesan" class="form-label required">Pesan</label>
+                                            <textarea class="form-control @error('pesan') is-invalid @enderror" name="pesan" rows="3">{{ old('pesan') }}</textarea>
+                                            @error('pesan')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="jenis" class="form-label required">Jenis</label>
+                                            <select class="form-select @error('jenis') is-invalid @enderror" name="jenis"
+                                                id="jenis">
+                                                <option selected disabled>Pilih Salah Satu</option>
+                                                <option value="stakeholder"
+                                                    {{ old('jenis') == 'stakeholder' ? 'selected' : '' }}>Stakeholder
+                                                </option>
+                                                <option value="sahabat" {{ old('jenis') == 'sahabat' ? 'selected' : '' }}>
+                                                    Sahabat</option>
+                                            </select>
+                                            @error('jenis')
+                                                <div class="invalid-feedback">
+                                                    {{ $message }}
+                                                </div>
+                                            @enderror
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </fieldset>
+
+                            <div class="d-flex flex-column flex-lg-row justify-content-end gap-2">
+                                <button type="button" class="btn btn-danger rounded-3" onclick="goBack()"><i
+                                        class="fas fa-undo"></i> Kembali</button>
+                                <button type="submit" class="btn btn-success rounded-3"><i class="fas fa-paper-plane"
+                                        aria-hidden="true"></i> Kirim
+                                    Data</button>
+                            </div>
+
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+@endsection
