@@ -210,7 +210,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->name('dashboard.')
 
             Route::get('jadwal_belajar', [JadwalBelajarPengajarController::class, 'index'])->name('jadwal_belajar.index');
             Route::get('jadwal_belajar/penilaian/{jadwalBelajarId}', [JadwalBelajarPengajarController::class, 'penilaian'])->name('jadwal_belajar.penilaian');
-            Route::post('jadwal_belajar/nilai/{jadwalBelajarId}', [JadwalBelajarPengajarController::class, 'store'])->name('jadwal_belajar.store');
+            Route::post('jadwal_belajar/nilai/{jadwalBelajarId}', [JadwalBelajarPengajarController::class, 'store'])->name('nilai.store');
             Route::post('jadwal_belajar/updateKeterangan/{jadwalBelajarId}', [JadwalBelajarPengajarController::class, 'updateKeterangan'])->name('jadwal_belajar.updateKeterangan');
 
             Route::get('jadwal_belajar/kehadiran/{jadwalBelajarId}', [JadwalBelajarPengajarController::class, 'kehadiran'])->name('jadwal_belajar.kehadiran');

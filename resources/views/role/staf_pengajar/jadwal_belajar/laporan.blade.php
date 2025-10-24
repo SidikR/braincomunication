@@ -263,7 +263,7 @@
                 if (result.isConfirmed) {
                     // Lakukan AJAX request untuk menyimpan nilai
                     $.ajax({
-                        url: "{{ route('dashboard.staf_pengajar.jadwal_belajar.store', '') }}/" +
+                        url: "{{ route('dashboard.staf_pengajar.nilai.store', '') }}/" +
                             jadwalBelajarId,
                         method: 'POST',
                         data: {
