@@ -77,7 +77,16 @@ class JadwalBelajarControllerStafAdministrasi extends Controller
                 'status' => 'pending',
             ]);
 
-            $jadwalBelajar->users()->sync(array_merge($validatedData['teacher_ids'], $validatedData['student_ids']));
+            // Sinkronisasi guru (teacher_ids)
+            if (!empty($validatedData['teacher_ids'])) {
+                $jadwalBelajar->users()->syncWithoutDetaching($validatedData['teacher_ids']);
+            }
+
+            // Sinkronisasi siswa (student_ids)
+            if (!empty($validatedData['student_ids'])) {
+                $jadwalBelajar->users()->syncWithoutDetaching($validatedData['student_ids']);
+            }
+
 
             Session::flash('success', 'Data jadwal belajar berhasil ditambahkan');
             return redirect()->route('dashboard.staf_administrasi.jadwal_belajar.index');
