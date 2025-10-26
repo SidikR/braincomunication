@@ -5,7 +5,12 @@
             <!-- Isi slide -->
             <img class="animate__animated animate__fadeIn" src="{{ asset($item->image) }}" alt="{{ $item->alt_image }}"
                 style="width:100%">
-            <div class="overlay-slide-hero"></div>
+            {{-- <div class="overlay-slide-hero"></div> --}}
+            @if (!empty($item->heading))
+                <div class="overlay-slide-hero"></div>
+            @elseif (!empty($item->paragraph))
+                <div class="overlay-slide-hero"></div>
+            @endif
             <div class="heading-slide d-flex flex-column justify-content-center align-items-center text-center">
                 <h1 class="text-white fw-bold animate__animated animate__bounceInLeft">{{ $item->heading }}</h1>
                 <p class="animate__animated animate__bounceInRight">{{ $item->paragraph }}</p>

@@ -913,9 +913,6 @@
 
                         // Tambahkan ke dropdown
                         const item = `<a href="/dashboard/{{ roleName() }}/informasi/${info.id}" class="d-flex align-items-center notif-item ${readClass}">
-                <div class="notif-img">
-                    <img src="{{ asset('assets-dashboard/img/jm_denis.jpg') }}" alt="Img Profile" />
-                </div>
                 <div class="notif-content">
                     <span class="subject">${info.sender_name || 'Staf Administrasi'}</span>
                     <span class="block">${info.title}</span>

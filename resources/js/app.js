@@ -6,7 +6,7 @@ import Isotope from "isotope-layout";
 import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import "../js/main";
 import $ from "jquery";
-import './echo';
+// import './echo';
 // import Swal from "sweetalert2";
 
 $(document).ready(function () {

@@ -314,6 +314,41 @@ section {
     --nav-hover-color: #ffffff;
 }
 
+.index-page .header li a {
+    color: #fff; /* isi teks */
+    font-weight: 700; /* biar isi teks lebih tebal */
+    letter-spacing: 0.6px; /* jarak antar huruf */
+    text-shadow: -1px -1px 0 var(--primary-color),
+        1px -1px 0 var(--primary-color), -1px 1px 0 var(--primary-color),
+        1px 1px 0 var(--primary-color), 0px 0px 4px var(--primary-color); /* efek glow lembut di tengah */
+}
+
+.index-page .header li a.active,
+.index-page.scrolled .header li a.active {
+    color: #fff;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-shadow: none; /* matikan shadow sepenuhnya */
+}
+
+.index-page.scrolled .header li ul li a,
+.index-page .header li ul li a {
+    color: var(--primary-color);
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-shadow: none; /* matikan shadow sepenuhnya */
+}
+
+.index-page.scrolled .header li ul li a.active{
+    background-color: var(--primary-color) !important;
+    color: white !important;
+    padding-top: 10px !important;
+    padding-bottom: 10px !important;
+    font-weight: 700;
+    letter-spacing: 0.6px;
+    text-shadow: none; /* matikan shadow sepenuhnya */
+}
+
 /* Home Page Custom Header on page scroll
 ------------------------------*/
 .index-page.scrolled .header {
