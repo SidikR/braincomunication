@@ -75,7 +75,7 @@
                                         data-bs-toggle="modal" data-bs-target="#materiModal"
                                         data-judul="{{ $materi->judul }}" data-topik="{{ $materi->topik }}"
                                         data-deskripsi="{{ $materi->deskripsi }}"
-                                        data-file="{{ asset('storage/'.$materi->file_path) }}">
+                                        data-file="{{ asset('storage/' . $materi->file_path) }}">
                                         <div>
                                             <h6 class="mb-1">{{ $materi->judul }}</h6>
                                             <small class="text-muted">{{ $materi->topik }}</small>
@@ -89,53 +89,11 @@
                         @endif
                     </div>
 
-                    <!-- Modal Detail Materi -->
-                    <div class="modal fade" id="materiModal" tabindex="-1" aria-labelledby="materiModalLabel"
-                        aria-hidden="true">
-                        <div class="modal-dialog modal-lg modal-dialog-centered">
-                            <div class="modal-content rounded-4 shadow-lg">
-                                <div class="modal-header bg-primary text-white rounded-top-4">
-                                    <h5 class="modal-title" id="materiModalLabel">Detail Materi</h5>
-                                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                                        aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    <h5 id="modalJudul"></h5>
-                                    <p class="text-muted" id="modalTopik"></p>
-                                    <p id="modalDeskripsi" class="mt-3"></p>
-
-                                    <div id="modalFileContainer" class="mt-4">
-                                        <iframe id="modalFilePreview" src="" frameborder="0" width="100%"
-                                            height="400px" class="border rounded-3"></iframe>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
 
             </div>
 
         </div>
-
-        <script>
-            const materiModal = document.getElementById('materiModal');
-            materiModal.addEventListener('show.bs.modal', event => {
-                const button = event.relatedTarget;
-                const judul = button.getAttribute('data-judul');
-                const topik = button.getAttribute('data-topik');
-                const deskripsi = button.getAttribute('data-deskripsi');
-                const file = button.getAttribute('data-file');
-
-                document.getElementById('modalJudul').textContent = judul;
-                document.getElementById('modalTopik').textContent = "Topik: " + topik;
-                document.getElementById('modalDeskripsi').textContent = deskripsi;
-
-                const iframe = document.getElementById('modalFilePreview');
-                iframe.src = file ? file : '';
-            });
-        </script>
 
         {{-- Pengajar --}}
         <div class="row">
@@ -213,5 +171,47 @@
     <script script>
         var givenDate = '{{ $jadwalBelajar->updated_at }}';
         calculateDaysAgo(givenDate, 'result');
+    </script>
+
+    <!-- Modal Detail Materi -->
+    <div class="modal fade" id="materiModal" tabindex="-1" aria-labelledby="materiModalLabel" aria-hidden="true"
+        data-bs-backdrop="static">
+        <div class="modal-dialog modal-xl modal-dialog-centered">
+            <div class="modal-content rounded-4 shadow-xl">
+                <div class="modal-header bg-primary text-white rounded-top-4">
+                    <h5 class="modal-title" id="materiModalLabel">Detail Materi</h5>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                        aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h5 id="modalJudul"></h5>
+                    <p class="text-muted" id="modalTopik"></p>
+                    <p id="modalDeskripsi" class="mt-3"></p>
+
+                    <div id="modalFileContainer" class="mt-4">
+                        <iframe id="modalFilePreview" src="" frameborder="0" width="100%" height="400px"
+                            class="border rounded-3"></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const materiModal = document.getElementById('materiModal');
+        materiModal.addEventListener('show.bs.modal', event => {
+            const button = event.relatedTarget;
+            const judul = button.getAttribute('data-judul');
+            const topik = button.getAttribute('data-topik');
+            const deskripsi = button.getAttribute('data-deskripsi');
+            const file = button.getAttribute('data-file');
+
+            document.getElementById('modalJudul').textContent = judul;
+            document.getElementById('modalTopik').textContent = "Topik: " + topik;
+            document.getElementById('modalDeskripsi').textContent = deskripsi;
+
+            const iframe = document.getElementById('modalFilePreview');
+            iframe.src = file ? file : '';
+        });
     </script>
 @endsection

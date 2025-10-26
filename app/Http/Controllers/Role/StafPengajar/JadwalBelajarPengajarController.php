@@ -44,8 +44,9 @@ class JadwalBelajarPengajarController extends Controller
         $rekapKehadirans = PresensiSiswa::where('jadwal_belajar_id', $jadwalBelajarId)
         ->with('user')
         ->get();
+        $materis = $jadwalBelajar->mataPelajaran->materi_pembelajarans;
 
-        return view('role.staf_pengajar.jadwal_belajar.laporan', compact('students','teachers', 'data', 'jadwalBelajar', 'rekapNilai', 'rekapKehadirans', 'jadwalBelajarId'));
+        return view('role.staf_pengajar.jadwal_belajar.laporan', compact('students','teachers', 'data', 'jadwalBelajar', 'rekapNilai', 'rekapKehadirans', 'jadwalBelajarId', 'materis'));
     }
 
     public function penilaian($jadwalBelajarId)

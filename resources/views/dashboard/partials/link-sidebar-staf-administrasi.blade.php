@@ -72,4 +72,11 @@
         </a>
     </li>
 
+    <li class="nav-item <?php echo isKeywordActive(['information']) ? 'active' : ''; ?>">
+        <a href="{{ route('dashboard.staf_administrasi.information.index') }}" class="collapsed">
+            <i class="fas fa-layer-group"></i>
+            <p>Informasi</p>
+        </a>
+    </li>
+
 </ul>

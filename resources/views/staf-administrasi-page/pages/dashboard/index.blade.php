@@ -45,16 +45,52 @@
 
         <div class="container">
 
-            <div class="card mt-3">
+            <div class="card">
                 <div class="card-header">
-                    <div class="row g-2 align-items-end justify-content-end">
+                    <form action="{{ route('dashboard.staf_administrasi.export.hasilAkhir') }}" method="GET"
+                        class="row g-3 align-items-end">
+
                         <div class="col-md-3">
-                            <label>Bulan</label>
+                            <label class="form-label fw-semibold">Periode Awal</label>
+                            <input type="date" name="start_date" class="form-control">
+                        </div>
+
+                        <div class="col-md-3">
+                            <label class="form-label fw-semibold">Periode Akhir</label>
+                            <input type="date" name="end_date" class="form-control">
+                        </div>
+
+                        <div class="col-md-3">
+                            <label class="form-label fw-semibold">Nilai KKM</label>
+                            <input type="number" name="kkm" class="form-control" value="70" min="0"
+                                max="100" required>
+                        </div>
+
+                        <div class="col-md-3 d-flex align-items-end">
+                            <button type="submit" class="btn btn-success w-100">
+                                <i class="bi bi-file-earmark-excel"></i> Export Excel
+                            </button>
+                        </div>
+
+                    </form>
+                    <small class="text-muted d-block mt-2">
+                        Jika periode dikosongkan, maka sistem akan mengekspor <strong>semua data hasil
+                            pembelajaran</strong>.
+                    </small>
+                </div>
+            </div>
+
+            <div class="card mt-3">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h4 class="card-title">Pengajar</h4>
+                    <div class="d-flex row align-items-end">
+                        <div class="col-md-6">
+                            <label class="form-label fw-semibold">Periode Bulan</label>
                             <input type="month" name="periode" class="form-control"
                                 value="{{ $tahun }}-{{ $bulan }}">
                         </div>
-                        <div class="col-md-3">
-                            <button class="btn btn-primary">Tampilkan</button>
+                        <div class="col-md-6">
+                            {{-- <button class="btn btn-primary">Tampilkan</button> --}}
                             <a href="{{ route('dashboard.staf_administrasi.laporan.export', ['bulan' => $bulan, 'tahun' => $tahun]) }}"
                                 class="btn btn-danger">
                                 <i class="fas fa-file-pdf"></i> Export PDF

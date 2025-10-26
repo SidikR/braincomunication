@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Information;
 use App\Models\StrukturOrganisasi;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
@@ -13,11 +14,13 @@ use App\Http\Controllers\FasilitasController;
 use App\Http\Controllers\TestimoniController;
 use App\Http\Controllers\UnitUsahaController;
 use App\Http\Controllers\ProfilKamiController;
+use App\Http\Controllers\InformationController;
 use App\Http\Controllers\PenghargaanController;
 use App\Http\Controllers\PesanControllerClient;
 use App\Http\Controllers\ProfileUserController;
 use App\Http\Controllers\TentangKamiController;
 use App\Http\Controllers\Siswa\ReportController;
+use App\Http\Controllers\InformationControllerUser;
 use App\Http\Controllers\Administrator\HeroController;
 use App\Http\Controllers\Administrator\InfoController;
 use App\Http\Controllers\Administrator\UserController;
@@ -104,6 +107,31 @@ Route::get('/tags', [BeritaControllerClient::class, 'getAllUniqueTags'])->name('
 
 Route::prefix('dashboard')->middleware(['auth', 'verified'])->name('dashboard.')->group(function () {
     Route::get('/', [RoleController::class, 'index'])->name('index');
+    Route::get('/notifications', function () {
+        $userId = auth()->id();
+
+        // Ambil informasi yang memang user ini penerimanya
+        $informations = Information::whereHas('recipients', function ($query) use ($userId) {
+            $query->where('user_id', $userId);
+        })
+            ->with(['recipients' => function ($query) use ($userId) {
+                $query->where('user_id', $userId); // ambil hanya recipient yg sesuai
+            }])
+            ->orderBy('created_at', 'desc') // ambil terbaru dulu
+            ->get()
+            ->map(function ($info) use ($userId) {
+                $pivot = $info->recipients->first(); // pasti ada 1 karena kita filter
+                return [
+                    'id' => $info->id,
+                    'title' => $info->title,
+                    'created_at' => $info->created_at->toIso8601String(),
+                    'is_read' => $pivot ? $pivot->pivot->is_read : false
+                ];
+            });
+
+        return response()->json($informations);
+    })->name('notifications');
+
     Route::get('/profile', [ProfileUserController::class, 'index'])->name('profile.index');
     Route::post('/profile/update', [ProfileUserController::class, 'update'])->name('profile.update');
 
@@ -174,7 +202,13 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->name('dashboard.')
         });
         Route::prefix('staf_administrasi')->name('staf_administrasi.')->group(function () {
             Route::get('/', [DashboardControllerStafAdministrasi::class, 'index'])->name('index');
+            // routes/web.php
+
+            Route::get('/export-hasil-akhir', [DashboardControllerStafAdministrasi::class, 'exportHasilAkhir'])->name('export.hasilAkhir');
             Route::get('/laporan-mengajar/export', [DashboardControllerStafAdministrasi::class, 'export'])->name('laporan.export');
+            Route::resource('information', InformationController::class);
+            Route::resource('informasi', InformationControllerUser::class);
+
             Route::resource('staf_pengajar', UserControllerStafAdministrasi::class);
             Route::get('/staf_pengajar/update_password/{id}', [UserControllerStafAdministrasi::class, 'updatePassword'])->name('staf_pengajar.update_password');
             Route::put('/staf_pengajar/update_password/{id}', [UserControllerStafAdministrasi::class, 'updatePasswordValue'])->name('staf_pengajar.update_password_value');
@@ -207,6 +241,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->name('dashboard.')
         });
         Route::prefix('staf_pengajar')->name('staf_pengajar.')->group(function () {
             Route::get('/', [DashboardControllerStafPengajar::class, 'index'])->name('index');
+            Route::resource('informasi', InformationControllerUser::class);
 
             Route::get('jadwal_belajar', [JadwalBelajarPengajarController::class, 'index'])->name('jadwal_belajar.index');
             Route::get('jadwal_belajar/penilaian/{jadwalBelajarId}', [JadwalBelajarPengajarController::class, 'penilaian'])->name('jadwal_belajar.penilaian');
@@ -232,6 +267,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->name('dashboard.')
         });
         Route::prefix('siswa')->name('siswa.')->group(function () {
             Route::get('/', [DashboardControllerSiswa::class, 'index'])->name('index');
+            Route::resource('informasi', InformationControllerUser::class);
             Route::get('/laporan/export', [ReportController::class, 'exportPdf'])
                 ->name('laporan.export');
 

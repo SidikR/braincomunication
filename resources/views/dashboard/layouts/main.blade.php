@@ -3,7 +3,7 @@
 
 <head>
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>{{getInfo()->title}}</title>
+    <title>{{ getInfo()->title }}</title>
     <meta content="width=device-width, initial-scale=1.0, shrink-to-fit=no" name="viewport" />
     <link rel="icon" href="{{ asset('storage/image/favicon.webp') }}" type="image/x-icon" />
     {{-- 
@@ -13,6 +13,41 @@
     {{-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script> --}}
+
+    <style>
+        /* Notifikasi yang belum dibaca */
+        .notif-unread {
+            background-color: #fff3cd;
+            /* kuning muda */
+            font-weight: 600;
+            /* tebal */
+            border-left: 4px solid #ffc107;
+            /* garis samping kuning */
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+        }
+
+        /* Notifikasi yang sudah dibaca */
+        .notif-read {
+            background-color: #f8f9fa;
+            /* abu muda */
+            color: #6c757d;
+            /* teks abu */
+            font-weight: 400;
+            /* normal */
+            padding: 10px;
+            margin-bottom: 5px;
+            border-radius: 5px;
+            opacity: 0.7;
+        }
+
+        /* Hover efek untuk keduanya */
+        .notif-item:hover {
+            background-color: #e2e6ea;
+            text-decoration: none;
+        }
+    </style>
 
     <!-- Fonts and icons -->
     <script src="{{ asset('assets-dashboard/js/plugin/webfont/webfont.min.js') }}"></script>
@@ -70,6 +105,8 @@
     </link>
     <script src="{{ asset('vendor/summernote/summernote-lite.js') }}"></script>
 
+    {{-- @vite(['resources/css/app.css', 'resources/js/app.js']) --}}
+
 </head>
 
 <body>
@@ -83,7 +120,7 @@
                 <div class="main-header-logo">
                     <!-- Logo Header -->
                     <div class="logo-header" data-background-color="dark">
-                        <a href="index.html" class="logo">
+                        <a href="#" class="logo">
                             <img src="{{ asset('storage/image/navbar.webp') }}" alt="navbar brand" class="navbar-brand"
                                 height="20" />
                         </a>
@@ -130,7 +167,10 @@
                                     </form>
                                 </ul>
                             </li>
-                            {{-- <li class="nav-item topbar-icon dropdown hidden-caret">
+                            <li class="nav-item topbar-icon dropdown hidden-caret">
+                                <span id="notifBadge"
+                                    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                    style="display:none;">0</span>
                                 <a class="nav-link dropdown-toggle" href="#" id="messageDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <i class="fa fa-envelope"></i>
@@ -140,68 +180,33 @@
                                     <li>
                                         <div class="dropdown-title d-flex justify-content-between align-items-center">
                                             Messages
-                                            <a href="#" class="small">Mark all as read</a>
+                                            {{-- <a href="#" class="small">Mark all as read</a> --}}
                                         </div>
                                     </li>
                                     <li>
                                         <div class="message-notif-scroll scrollbar-outer">
-                                            <div class="notif-center">
-                                                <a href="#">
-                                                    <div class="notif-img">
-                                                        <img src="{{ asset('assets-dashboard/img/jm_denis.jpg') }}"
-                                                            alt="Img Profile" />
-                                                    </div>
-                                                    <div class="notif-content">
-                                                        <span class="subject">Jimmy Denis</span>
-                                                        <span class="block"> How are you ? </span>
-                                                        <span class="time">5 minutes ago</span>
-                                                    </div>
-                                                </a>
-                                                <a href="#">
-                                                    <div class="notif-img">
-                                                        <img src="{{ asset('assets-dashboard/img/chadengle.jpg') }}"
-                                                            alt="Img Profile" />
-                                                    </div>
-                                                    <div class="notif-content">
-                                                        <span class="subject">Chad</span>
-                                                        <span class="block"> Ok, Thanks ! </span>
-                                                        <span class="time">12 minutes ago</span>
-                                                    </div>
-                                                </a>
-                                                <a href="#">
-                                                    <div class="notif-img">
-                                                        <img src="{{ asset('assets-dashboard/img/mlane.jpg') }}"
-                                                            alt="Img Profile" />
-                                                    </div>
-                                                    <div class="notif-content">
-                                                        <span class="subject">Jhon Doe</span>
-                                                        <span class="block">
-                                                            Ready for the meeting today...
-                                                        </span>
-                                                        <span class="time">12 minutes ago</span>
-                                                    </div>
-                                                </a>
-                                                <a href="#">
-                                                    <div class="notif-img">
-                                                        <img src="{{ asset('assets-dashboard/img/talha.jpg') }}"
-                                                            alt="Img Profile" />
-                                                    </div>
-                                                    <div class="notif-content">
-                                                        <span class="subject">Talha</span>
-                                                        <span class="block"> Hi, Apa Kabar ? </span>
-                                                        <span class="time">17 minutes ago</span>
-                                                    </div>
-                                                </a>
+                                            <div class="notif-center p-3" id="notifList">
+                                                <a class="text-center text-muted small">Tidak ada informasi baru</a>
                                             </div>
                                         </div>
                                     </li>
                                     <li>
-                                        <a class="see-all" href="javascript:void(0);">See all messages<i
-                                                class="fa fa-angle-right"></i>
-                                        </a>
+                                        <a class="see-all"
+                                            href="{{ route('dashboard.' . roleName() . '.informasi.index') }}">See all
+                                            messages<i class="fa fa-angle-right"></i></a>
                                     </li>
                                 </ul>
-                            </li> --}}
+                            </li>
+
+                            <li>
+                                <div id="enableNotifications" class="p-2">
+                                    <button class="btn btn-primary">Aktifkan Notifikasi & Sound</button>
+                                </div>
+                            </li>
+
+                            <div class="position-fixed top-0 end-0 p-3" style="z-index: 1080;">
+                                <div id="notifToastContainer"></div>
+                            </div>
                             {{-- <li class="nav-item topbar-icon dropdown hidden-caret">
                                 <a class="nav-link dropdown-toggle" href="#" id="notifDropdown" role="button"
                                     data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -333,6 +338,19 @@
                                     </div>
                                 </div>
                             </li> --}}
+                            {{-- <div class="dropdown me-3">
+                                <button class="btn btn-light position-relative" id="notifDropdown"
+                                    data-bs-toggle="dropdown">
+                                    🔔
+                                    <span id="notifBadge"
+                                        class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                        style="display:none;">0</span>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end p-2" style="width: 320px;" id="notifList">
+                                    <li class="text-center text-muted small">Tidak ada informasi baru</li>
+                                </ul>
+                            </div> --}}
+
                             <li class="nav-item topbar-icon dropdown hidden-caret">
                                 <div id="current-time"></div>
                             </li>
@@ -729,6 +747,205 @@
     <script>
         $(document).ready(function() {
             $('#summernote').summernote();
+        });
+    </script>
+
+    {{-- <script>
+        $(document).ready(function() {
+            let lastCount = 0;
+            let canPlayAudio = false;
+
+            // Aktifkan audio setelah user interaksi
+            $(document).one('click keydown', function() {
+                canPlayAudio = true;
+            });
+
+            function showToastInformasi(info) {
+                const toastId = 'toast-' + info.id;
+                const toastHtml = `
+        <div id="${toastId}" class="toast align-items-center text-bg-info border-0 mb-2" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">${info.title}</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>`;
+                $('#notifToastContainer').prepend(toastHtml);
+                const toastEl = document.getElementById(toastId);
+                const toast = new bootstrap.Toast(toastEl, {
+                    delay: 5000
+                });
+                toast.show();
+            }
+
+            function fetchNotifications() {
+                $.getJSON("{{ route('dashboard.notifications') }}", function(data) {
+                    const notifBadge = $('#notifBadge');
+                    const notifList = $('#notifList');
+
+                    notifList.empty();
+
+                    if (data.length > 0) {
+                        notifBadge.text(data.length).show();
+
+                        // Audio & toast untuk notif baru
+                        if (data.length > lastCount && canPlayAudio) {
+                            new Audio('/storage/sound/notif.wav').play().catch(err => {
+                                console.warn('Audio play gagal:', err);
+                            });
+
+                            // Tampilkan toast hanya untuk notif baru
+                            data.slice(0, data.length - lastCount).forEach(info => showToastInformasi(
+                            info));
+                        }
+
+                        lastCount = data.length;
+
+                        // Tambahkan setiap notif ke dropdown
+                        data.forEach(info => {
+                            const item = `<a href="/dashboard/information/${info.id}" class="d-flex align-items-center notif-item">
+                        <div class="notif-img">
+                            <img src="{{ asset('assets-dashboard/img/jm_denis.jpg') }}" alt="Img Profile" />
+                        </div>
+                        <div class="notif-content">
+                            <span class="subject">${info.sender_name || 'Admin'}</span>
+                            <span class="block">${info.title}</span>
+                            <span class="time">${info.created_at}</span>
+                        </div>
+                    </a>`;
+                            notifList.append(item);
+                        });
+                    } else {
+                        notifBadge.hide();
+                        notifList.append(
+                            '<a class="text-center text-muted small">Tidak ada informasi baru</a>');
+                        lastCount = 0;
+                    }
+                }).fail(function(jqxhr, textStatus, error) {
+                    console.error("Gagal mengambil notifikasi:", textStatus, error);
+                });
+            }
+
+            fetchNotifications();
+            setInterval(fetchNotifications, 5000);
+        });
+    </script> --}}
+
+    <script>
+        $(document).ready(function() {
+            let canNotify = false;
+            const audio = new Audio('/storage/sound/notif.wav');
+            audio.load();
+
+            // Cek izin notification
+            if (Notification.permission === "granted") {
+                canNotify = true;
+                $('#enableNotifications').hide();
+            } else if (Notification.permission === "denied") {
+                canNotify = false;
+                $('#enableNotifications').hide();
+            } else {
+                $('#enableNotifications').show();
+            }
+
+            $('#enableNotifications button').click(async function() {
+                const permission = await Notification.requestPermission();
+                if (permission === "granted") {
+                    canNotify = true;
+                    $('#enableNotifications').hide();
+                } else {
+                    canNotify = false;
+                    alert("Notifikasi desktop tidak diizinkan. Suara juga tidak akan diputar.");
+                }
+            });
+
+            function showToastInformasi(info) {
+                const toastId = 'toast-' + info.id;
+                const toastHtml = `
+        <div id="${toastId}" class="toast align-items-center text-bg-info border-0 mb-2" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="d-flex">
+                <div class="toast-body">${info.title}</div>
+                <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+        </div>`;
+                $('#notifToastContainer').prepend(toastHtml);
+                const toastEl = document.getElementById(toastId);
+                const toast = new bootstrap.Toast(toastEl, {
+                    delay: 5000
+                });
+                toast.show();
+            }
+
+            function showDesktopNotification(info) {
+                if (!canNotify) return;
+                const notif = new Notification(info.title, {
+                    body: info.description || '',
+
+                });
+                notif.onclick = () => {
+                    window.focus();
+                    window.location.href = `/dashboard/information/${info.id}`;
+                };
+            }
+
+            function fetchNotifications() {
+                $.getJSON("{{ route('dashboard.notifications') }}", function(data) {
+                    const notifBadge = $('#notifBadge');
+                    const notifList = $('#notifList');
+                    notifList.empty();
+
+                    // Ambil ID notif yang sudah ditampilkan dari localStorage
+                    let shownIds = JSON.parse(localStorage.getItem('shownNotifs') || "[]");
+                    let newIds = [];
+
+                    // Hitung jumlah yang belum dibaca untuk badge
+                    const unreadCount = data.filter(n => !n.is_read).length;
+                    if (unreadCount > 0) notifBadge.text(unreadCount).show();
+                    else notifBadge.hide();
+
+                    if (data.length === 0) {
+                        notifList.append('<a class="text-center text-muted small">Tidak ada informasi</a>');
+                        return;
+                    }
+
+                    data.forEach(info => {
+                        // Tentukan kelas untuk membedakan read / unread
+                        const readClass = info.is_read ? 'notif-read' : 'notif-unread';
+
+                        // Tambahkan ke dropdown
+                        const item = `<a href="/dashboard/{{ roleName() }}/informasi/${info.id}" class="d-flex align-items-center notif-item ${readClass}">
+                <div class="notif-img">
+                    <img src="{{ asset('assets-dashboard/img/jm_denis.jpg') }}" alt="Img Profile" />
+                </div>
+                <div class="notif-content">
+                    <span class="subject">${info.sender_name || 'Staf Administrasi'}</span>
+                    <span class="block">${info.title}</span>
+                    <span class="time">${info.created_at}</span>
+                </div>
+            </a>`;
+                        notifList.append(item);
+
+                        // Hanya notif baru yang akan memicu toast & audio
+                        if (!shownIds.includes(info.id) && !info.is_read) {
+                            newIds.push(info.id);
+                            if (canNotify) {
+                                audio.play().catch(err => console.warn('Audio play gagal:', err));
+                                showToastInformasi(info);
+                                showDesktopNotification(info);
+                            }
+                        }
+                    });
+
+                    // Update localStorage
+                    localStorage.setItem('shownNotifs', JSON.stringify([...shownIds, ...newIds]));
+                }).fail(function(jqxhr, textStatus, error) {
+                    console.error("Gagal mengambil notifikasi:", textStatus, error);
+                });
+            }
+
+
+            // Polling
+            fetchNotifications();
+            setInterval(fetchNotifications, 5000);
         });
     </script>
 

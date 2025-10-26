@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\StafAdministrasi;
 
+use Carbon\Carbon;
 use App\Models\User;
 use App\Models\Pesan;
 use App\Models\Berita;
@@ -9,15 +10,17 @@ use App\Models\Bidang;
 use App\Models\Gallery;
 use App\Models\Layanan;
 use App\Models\Pejabat;
-use Barryvdh\DomPDF\Facade\Pdf;
 use App\Models\NilaiSiswa;
 use App\Models\GaleriVideo;
 use Illuminate\Http\Request;
 use App\Models\PresensiSiswa;
 use App\Models\KategoriBerita;
 use App\Models\KategoriGallery;
+use Barryvdh\DomPDF\Facade\Pdf;
+use App\Exports\HasilAkhirExport;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DashboardControllerStafAdministrasi extends Controller
 {
@@ -94,5 +97,27 @@ class DashboardControllerStafAdministrasi extends Controller
             ->setPaper('a4', 'portrait');
 
         return $pdf->download("Laporan_Mengajar_{$bulan}_{$tahun}.pdf");
+    }
+
+    public function exportHasilAkhir(Request $request)
+    {
+        // Validasi KKM wajib
+        $request->validate([
+            'kkm' => 'required|numeric|min:0|max:100',
+            'start_date' => 'nullable|date',
+            'end_date' => 'nullable|date|after_or_equal:start_date',
+        ]);
+
+        $start = $request->input('start_date');
+        $end = $request->input('end_date');
+        $kkm = $request->input('kkm');
+
+        // Jika tanggal kosong, export semua
+        return Excel::download(
+            new HasilAkhirExport($start, $end, $kkm),
+            $start && $end
+                ? "hasil_akhir_{$start}_to_{$end}.xlsx"
+                : 'hasil_akhir_semua.xlsx'
+        );
     }
 }

@@ -4,9 +4,10 @@ use App\Models\Info;
 use App\Models\Berita;
 use App\Models\Bidang;
 use App\Models\Layanan;
-use App\Models\KategoriBerita;
-use App\Http\Controllers\BeritaController;
 use App\Models\Program;
+use App\Models\KategoriBerita;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\BeritaController;
 
 if (!function_exists('GetNavbar')) {
     function getLayanan()
@@ -81,6 +82,6 @@ if (!function_exists('GetNavbar')) {
 
     function roleName()
     {
-        return session('role_user');
+        return Auth::user()->role;
     }
 }

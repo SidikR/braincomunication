@@ -101,11 +101,12 @@ class JadwalBelajarControllerStafAdministrasi extends Controller
             $jadwal_belajar = JadwalBelajar::findOrFail($id);
             $teachers = $jadwal_belajar->users()->where('role', 'staf_pengajar')->get();
             $students = $jadwal_belajar->users()->where('role','siswa')->get();
+            $materis = $jadwal_belajar->mataPelajaran->materi_pembelajarans;
             $data = [
                 'header_name' => "Data Jadwal Belajar",
                 'page_name' => "Detail Jadwal Belajar " . $jadwal_belajar->title
             ];
-            return view('staf-administrasi-page.pages.jadwal_belajar.read', compact('jadwal_belajar', 'data', 'teachers', 'students'));
+            return view('staf-administrasi-page.pages.jadwal_belajar.read', compact('jadwal_belajar', 'data', 'teachers', 'students', 'materis'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Gagal memuat detail data jadwal pembelajaran. ' . $e->getMessage());
         }

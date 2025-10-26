@@ -7,6 +7,22 @@
             </div>
             <div class="d-none d-xl-flex align-items-center justify-content-end">
 
+                <div class="dropdown me-3">
+                    <button class="btn btn-light position-relative" id="notifDropdown" data-bs-toggle="dropdown">
+                        🔔
+                        <span id="notifBadge"
+                            class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                            style="display:none;">0</span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-menu-end p-2" style="width: 320px;" id="notifList">
+                        <li class="text-center text-muted small">Tidak ada informasi baru</li>
+                    </ul>
+                </div>
+
+                <!-- Script sebaiknya di luar div -->
+                {{-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> --}}
+                
+
                 <span class="px-2 text-white ">Selamat Datang, {{ Auth::user()->name }}</span>
                 <div class="flex-shrink-0 dropdown">
                     <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle b"

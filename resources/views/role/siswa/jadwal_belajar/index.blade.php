@@ -28,7 +28,7 @@
                         <div class="d-flex gap-2 justify-content-end align-items-center">
                             <a href={{ route('dashboard.siswa.jadwal_belajar.create') }}>
                                 <button type="button" class="btn btn-primary btn-sm rounded-4"><i class="fa fa-plus"
-                                        aria-hidden="true"></i> Tambah Data</button>
+                                        aria-hidden="true"></i> Request Jadwal Belajar</button>
                             </a>
                         </div>
                     </div>
