@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\administrator\Api\HeroController;
+use App\Http\Controllers\Administrator\Api\HeroController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
