@@ -138,6 +138,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->name('dashboard.')
     Route::middleware(['match.role'])->group(function () {
 
         Route::prefix('administrator')->name('administrator.')->group(function () {
+            Route::resource('informasi', InformationControllerUser::class);
             Route::get('/tentang_kami/profil_kami', [AdministratorProfilKamiController::class, 'index'])->name('tentang_kami.profil_kami.index');
             Route::put('/tentang_kami/profil_kami', [AdministratorProfilKamiController::class, 'update'])->name('tentang_kami.profil_kami.update');
             Route::get('/tentang_kami/sejarah', [SejarahController::class, 'index'])->name('tentang_kami.sejarah.index');
