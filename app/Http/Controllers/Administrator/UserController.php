@@ -42,7 +42,7 @@ class UserController extends Controller
                 'header_name' => "Daftar User",
                 'page_name' => "User"
             ];
-            $user = User::all();
+            $user = User::where('role', '!=', 'administrator')->get();
 
             return view('administrator-page.pages.user.index', compact('data', 'user'));
         } catch (\Exception $e) {

@@ -265,6 +265,7 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->name('dashboard.')
         });
         Route::prefix('user')->name('user.')->group(function () {
             Route::get('/', [UserDashboardController::class, 'index'])->name('index');
+            Route::resource('informasi', InformationControllerUser::class);
         });
         Route::prefix('siswa')->name('siswa.')->group(function () {
             Route::get('/', [DashboardControllerSiswa::class, 'index'])->name('index');
