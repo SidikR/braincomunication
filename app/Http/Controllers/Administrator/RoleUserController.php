@@ -33,7 +33,7 @@ class RoleUserController extends Controller
                 'header_name' => "Daftar Role User",
                 'page_name' => "Role User"
             ];
-            $role_user = RoleUser::all();
+            $role_user = RoleUser::where('nama', '!=', 'administrator')->get();
 
             return view('administrator-page.pages.role-user.index', compact('data', 'role_user'));
         } catch (\Exception $e) {

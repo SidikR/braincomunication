@@ -67,7 +67,7 @@
                                                         title="Edit Data"><i class="fas fa-edit"
                                                             aria-hidden="true"></i></button></a>
 
-                                                <button type="button" class="btn btn-sm btn-danger p-2 py-1 fs-6 rounded-3"
+                                                <button type="button" class="disabled btn btn-sm btn-danger p-2 py-1 fs-6 rounded-3"
                                                     onclick="WarningAlert('delete', '/dashboard/administrator/role_user/{{ $item->id }}', 'Delete User?', `Apakah anda yakin ingin menghapus user '{{ $item->nama }}' ?`)"
                                                     title="Remove data role_user : {{ $item->nama }}"
                                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Data"><i
