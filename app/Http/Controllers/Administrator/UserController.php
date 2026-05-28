@@ -42,7 +42,7 @@ class UserController extends Controller
                 'header_name' => "Daftar User",
                 'page_name' => "User"
             ];
-            $user = User::where('role', '!=', 'administrator')->get();
+            $user = User::all();
 
             return view('administrator-page.pages.user.index', compact('data', 'user'));
         } catch (\Exception $e) {
@@ -180,23 +180,14 @@ class UserController extends Controller
 
     /**
      * Remove the specified resource from storage.
+     * Disabled: administrator cannot delete users.
      */
     public function destroy($id, Request $request)
     {
-        try {
-            $user = User::find($id);
-            $user->delete();
-
-            return response()->json([
-                'success' => true,
-                'message' => 'Data User berhasil dihapus',
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => 'Gagal menghapus data user : ' . $e->getMessage()
-            ]);
-        }
+        return response()->json([
+            'success' => false,
+            'message' => 'User tidak dapat dihapus. Gunakan fitur nonaktifkan akun jika diperlukan.',
+        ], 403);
     }
 
     public function statusAkun($id, Request $request)

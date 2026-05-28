@@ -34,7 +34,7 @@
                         <span><i class="fas fa-clock text-primary"></i> Updated : <span id="result"></span></span>
                     </div>
                     <div class="card-body">
-                        <form action={{ route('dashboard.administrator.fasilitas.update', ['fasilitas' => $fasilitas->id]) }}
+                        <form action={{ route('dashboard.administrator.fasilitas.update', ['fasilita' => $fasilitas->id]) }}
                             method="post" enctype="multipart/form-data">
                             @csrf
                             @method('PUT')
@@ -47,15 +47,19 @@
                                             <div class="col-12 d-flex justify-content-center align-items-center ">
                                                 <div class="image text-center">
                                                     <div class="mb-3">
-                                                        <label for="image1" class="mb-2">Thumbnail </label>
+                                                        <label for="image1" class="mb-2">Image </label>
                                                         <div id="imagePreviewBox">
                                                             <figure class="image-preview">
-                                                                <img src="{{ asset($fasilitas->thumbnail) }}" id="image1-display"
+                                                                <img src="{{ asset($fasilitas->image) }}" id="image1-display"
                                                                     alt="{{ $fasilitas->title }}">
                                                                 <input type="hidden" name="image" id="image1"
-                                                                    value="{{ $fasilitas->thumbnail }}">
+                                                                    value="{{ $fasilitas->image }}">
                                                             </figure>
                                                         </div>
+                                                        <button type="button" class="btn btn-primary mt-2 upload-button"
+                                                            id="button-image" data-input-id="image1">
+                                                            <i class="bi bi-cloud-arrow-up-fill"></i> Ganti Foto
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>

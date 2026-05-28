@@ -74,7 +74,7 @@
                                                     <button type="button"
                                                         class="btn btn-sm btn-primary p-2 py-1 fs-6 rounded-3"
                                                         data-bs-toggle="tooltip" data-bs-placement="top"
-                                                        title="Read data jadwal belajar : {{ $item->name }}">
+                                                        title="Read data jadwal belajar : {{ $item->title }}">
                                                         <i class="fas fa-share" aria-hidden="true"></i> Laporan
                                                     </button>
                                                 </a> --}}
@@ -83,7 +83,7 @@
                                                     <button type="button"
                                                         class="btn btn-sm btn-primary p-2 py-1 fs-6 rounded-3"
                                                         data-bs-toggle="tooltip" data-bs-placement="top"
-                                                        title="Read data jadwal belajar : {{ $item->name }}">
+                                                        title="Read data jadwal belajar : {{ $item->title }}">
                                                         <i class="fas fa-share" aria-hidden="true"></i> Detail
                                                     </button>
                                                 </a>

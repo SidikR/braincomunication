@@ -73,20 +73,20 @@
                                                         type="button"
                                                         class="btn btn-sm btn-primary p-2 py-1 fs-6 rounded-3"
                                                         data-bs-toggle="tooltip" data-bs-placement="top"
-                                                        title="Read data jadwal belajar : {{ $item->name }}"><i
+                                                        title="Read data jadwal belajar : {{ $item->title }}"><i
                                                             class="fas fa-clipboard-list" aria-hidden="true"></i>
                                                     </button></a>
                                                 <a
                                                     href={{ route('dashboard.staf_administrasi.jadwal_belajar.edit', ['jadwal_belajar' => $item->id]) }}><button
                                                         class="btn btn-sm btn-success p-2 py-1 fs-6 rounded-3"
-                                                        title="Edit data jadwal belajar : {{ $item->name }}"
+                                                        title="Edit data jadwal belajar : {{ $item->title }}"
                                                         data-bs-toggle="tooltip" data-bs-placement="top"
                                                         title="Edit Data"><i class="fas fa-edit"
                                                             aria-hidden="true"></i></button></a>
 
                                                 <button type="button" class="btn btn-sm btn-danger p-2 py-1 fs-6 rounded-3"
                                                     onclick="WarningAlert('delete', '/dashboard/staf_administrasi/jadwal_belajar/{{ $item->id }}', 'Delete User?', `Apakah anda yakin ingin menghapus user '{{ $item->name }}' ?`)"
-                                                    title="Remove data jadwal belajar : {{ $item->name }}"
+                                                    title="Remove data jadwal belajar : {{ $item->title }}"
                                                     data-bs-toggle="tooltip" data-bs-placement="top" title="Delete Data"><i
                                                         class="fas fa-trash-alt" aria-hidden="true"></i></button>
                                             </td>

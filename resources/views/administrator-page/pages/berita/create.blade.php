@@ -232,7 +232,7 @@
     </div>
     <script>
         $(document).ready(function() {
-            $('#content').summernote();
+            initSummernote('#content');
         });
     </script>
 @endsection

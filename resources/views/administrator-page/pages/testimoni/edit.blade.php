@@ -56,6 +56,10 @@
                                                                 value="{{ $testimoni->image }}">
                                                         </figure>
                                                     </div>
+                                                    <button type="button" class="btn btn-primary mt-2 upload-button"
+                                                        id="button-image" data-input-id="image1">
+                                                        <i class="bi bi-cloud-arrow-up-fill"></i> Ganti Foto
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -137,7 +141,7 @@
 
    <script>
         $(document).ready(function() {
-            $('#summernote').summernote();
+            initSummernote('#summernote');
         });
     </script>
 

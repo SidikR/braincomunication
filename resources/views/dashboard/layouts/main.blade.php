@@ -90,6 +90,33 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
 
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script>
+        var summernoteImageUploadUrl = '{{ route("dashboard.upload.summernote") }}';
+        function initSummernote(selector) {
+            $(selector).summernote({
+                callbacks: {
+                    onImageUpload: function(files) {
+                        var $elem = $(this);
+                        var data = new FormData();
+                        data.append('file', files[0]);
+                        data.append('_token', '{{ csrf_token() }}');
+                        $.ajax({
+                            url: summernoteImageUploadUrl,
+                            method: 'POST',
+                            data: data,
+                            contentType: false,
+                            processData: false,
+                            success: function(response) {
+                                $elem.summernote('insertImage', response.url);
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    </script>
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 
     <!-- include libraries(jQuery, bootstrap) -->
@@ -746,7 +773,7 @@
 
     <script>
         $(document).ready(function() {
-            $('#summernote').summernote();
+            initSummernote('#summernote');
         });
     </script>
 

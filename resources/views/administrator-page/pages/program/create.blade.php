@@ -119,7 +119,7 @@
 
     <script>
         $(document).ready(function() {
-            $('#summernote').summernote();
+            initSummernote('#summernote');
         });
     </script>
 @endsection

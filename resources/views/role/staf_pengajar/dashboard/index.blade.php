@@ -55,7 +55,7 @@
                 <div class="card card-stats card-round shadow-sm border-0">
                     <div class="card-body text-center">
                         <h6 class="fw-semibold text-info mb-1">Rata Kehadiran</h6>
-                        <h2 class="fw-bold mb-0">{{ number_format($rataKehadiran * 100, 1) }}%</h2>
+                        <h2 class="fw-bold mb-0">{{ number_format($rataKehadiran, 1) }}%</h2>
                     </div>
                 </div>
             </div>

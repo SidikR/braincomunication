@@ -135,6 +135,8 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->name('dashboard.')
     Route::get('/profile', [ProfileUserController::class, 'index'])->name('profile.index');
     Route::post('/profile/update', [ProfileUserController::class, 'update'])->name('profile.update');
 
+    Route::post('/upload/summernote', [FileManagerController::class, 'uploadSummernoteImage'])->name('upload.summernote');
+
     Route::middleware(['match.role'])->group(function () {
 
         Route::prefix('administrator')->name('administrator.')->group(function () {

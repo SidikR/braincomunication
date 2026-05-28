@@ -30,7 +30,7 @@ class DashboardControllerSiswa extends Controller
 
         // Statistik utama
         $totalJadwal = $jadwalIds->count();
-        $jadwalAktif = JadwalBelajar::whereIn('id', $jadwalIds)->where('status', 'active')->count();
+        $jadwalAktif = JadwalBelajar::whereIn('id', $jadwalIds)->count();
 
         $rataNilai = NilaiSiswa::where('user_id', $siswa->id)->avg('nilai');
 

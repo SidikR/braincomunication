@@ -65,7 +65,7 @@
 
     <script>
         $(document).ready(function() {
-            $('#summernote1').summernote();
+            initSummernote('#summernote1');
         });
     </script>
 @endsection

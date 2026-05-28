@@ -32,8 +32,9 @@ class DashboardControllerStafPengajar extends Controller
         // ID semua jadwal yang diajar
         $jadwalIds = $jadwal->pluck('id');
 
-        // Rata-rata kehadiran siswa (anggap kolom kehadiran berisi 1/0)
-        $rataKehadiran = PresensiSiswa::whereIn('jadwal_belajar_id', $jadwalIds)->avg('kehadiran') ?? 0;
+        $totalPresensi = PresensiSiswa::whereIn('jadwal_belajar_id', $jadwalIds)->count();
+        $totalHadir = PresensiSiswa::whereIn('jadwal_belajar_id', $jadwalIds)->where('kehadiran', 'hadir')->count();
+        $rataKehadiran = $totalPresensi > 0 ? round(($totalHadir / $totalPresensi) * 100, 1) : 0;
 
         // Rata-rata nilai siswa di semua jadwal
         $rataNilai = NilaiSiswa::whereIn('jadwal_belajar_id', $jadwalIds)->avg('nilai') ?? 0;

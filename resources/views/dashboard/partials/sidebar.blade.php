@@ -3,7 +3,7 @@
         <!-- Logo Header -->
         <div class="logo-header" data-background-color="dark">
             <a href="#" class="logo">
-                <img src="{{ asset('storage/image/sidebar.webp') }}" alt="navbar brand"
+                <img src="{{ asset('storage/image/navbar.webp') }}" alt="navbar brand"
                     class="navbar-brand" height="30" />
             </a>
             <div class="nav-toggle">

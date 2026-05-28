@@ -58,7 +58,7 @@
                                                         type="button"
                                                         class="btn btn-sm btn-primary p-2 py-1 fs-6 rounded-3"
                                                         data-bs-toggle="tooltip" data-bs-placement="top"
-                                                        title="Read data jadwal belajar : {{ $item->name }}"><i
+                                                        title="Read data jadwal belajar : {{ $item->title }}"><i
                                                             class="fas fa-clipboard-list" aria-hidden="true"></i>
                                                     </button></a>
                                             </td> --}}

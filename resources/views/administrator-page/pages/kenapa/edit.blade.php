@@ -47,15 +47,19 @@
                                             <div class="col-12 d-flex justify-content-center align-items-center ">
                                                 <div class="image text-center">
                                                     <div class="mb-3">
-                                                        <label for="image1" class="mb-2">Thumbnail </label>
+                                                        <label for="image1" class="mb-2">Image </label>
                                                         <div id="imagePreviewBox">
                                                             <figure class="image-preview">
-                                                                <img src="{{ asset($kenapa->thumbnail) }}" id="image1-display"
-                                                                    alt="{{ $kenapa->title }}">
+                                                                <img src="{{ asset($kenapa->image) }}"
+                                                                    id="image1-display" alt="{{ $kenapa->title }}">
                                                                 <input type="hidden" name="image" id="image1"
-                                                                    value="{{ $kenapa->thumbnail }}">
+                                                                    value="{{ $kenapa->image }}">
                                                             </figure>
                                                         </div>
+                                                        <button type="button" class="btn btn-primary mt-2 upload-button"
+                                                            id="button-image" data-input-id="image1">
+                                                            <i class="bi bi-cloud-arrow-up-fill"></i> Ganti Foto
+                                                        </button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -72,8 +76,8 @@
                                                 @enderror
                                             </div>
                                         </div>
-                                        </div>
                                     </div>
+
                                 </div>
                             </fieldset>
 
@@ -91,6 +95,12 @@
             </div>
         </div>
     </div>
+
+    <script>
+        $(document).ready(function() {
+            initSummernote('#summernote');
+        });
+    </script>
 
     <script script>
         var givenDate = '{{ $kenapa->updated_at }}';

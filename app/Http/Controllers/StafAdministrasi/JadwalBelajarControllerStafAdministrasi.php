@@ -141,6 +141,7 @@ class JadwalBelajarControllerStafAdministrasi extends Controller
             $jadwal_belajar->update([
                 'title' => $validatedData['title'],
                 'keterangan' => $validatedData['keterangan'],
+                'mata_pelajaran_id' => $validatedData['mata_pelajaran_id'],
                 'start_time' => $validatedData['start_time'],
                 'end_time' => $validatedData['end_time'],
                 'status' => $validatedData['status'],
