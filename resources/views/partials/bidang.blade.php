@@ -4,8 +4,8 @@
      <!--  Section Title -->
      <div class="container section-title">
          <h2>Bidang Bidang</h2>
-         <p>Berikut ini bidang bidang yang ada di Dinas Komunikasi dan Informatika Kabupaten
-             Lampung Selatan</p>
+         <p>Berikut ini bidang bidang yang ada di {{getInfo()->title}} Kabupaten
+             </p>
      </div><!-- End Section Title -->
 
      <div class="container">

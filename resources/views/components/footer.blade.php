@@ -7,7 +7,7 @@
                     <a href="#" class="logo d-flex align-items-center m-0">
                         <span>{{ getInfo()->title }}</span>
                     </a>
-                    {{-- <a href="https://lampungselatankab.go.id" target="_blank">Pemerintah Kabupaten Lampung Selatan</a> --}}
+                    {{-- <a href="https://lampungselatankab.go.id" target="_blank">Pemerintah Kabupaten </a> --}}
                     <div class="social-links d-flex mt-4">
                         <a href="{{ getInfo()->twitter }}" target="_blank">
                             <i class="bi bi-twitter"></i>

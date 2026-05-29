@@ -7,7 +7,7 @@
             <div class="container">
                 <div class="container section-title detail mt-5 d-flex flex-column" data-aos="fade-up">
                     <h2 class="text-white">Galeri</h2>
-                    <p class="text-white">Setiap Momen yang ada di Dinas Komunikasi dan Informatika, ada di sini. Yuk Cek
+                    <p class="text-white">Setiap Momen yang ada di {{getInfo()->title}}, ada di sini. Yuk Cek
                         Langsung.!</p>
                 </div>
             </div>

@@ -20,8 +20,8 @@ class BeritaController extends Controller
         $meta = [
             'app_name' => getInfo()->title,
             'title' => 'Berita',
-            'description' => 'Temukan berita terkini dan informasi terupdate seputar Lampung Selatan. Dapatkan liputan lengkap tentang berbagai kegiatan komunitas, layanan publik, dan inisiatif digital yang memajukan daerah ini. Mari bergabung dalam transformasi digital untuk menciptakan masyarakat yang terhubung dan berdaya saing tinggi',
-            'keywords' => 'berita Lampung Selatan, informasi terkini, kegiatan komunitas, layanan publik, inisiatif digital, transformasi digital, masyarakat terhubung, masyarakat berdaya saing',
+            'description' => 'Temukan berita terkini dan informasi terupdate seputar . Dapatkan liputan lengkap tentang berbagai kegiatan komunitas, layanan publik, dan inisiatif digital yang memajukan daerah ini. Mari bergabung dalam transformasi digital untuk menciptakan masyarakat yang terhubung dan berdaya saing tinggi',
+            'keywords' => 'berita , informasi terkini, kegiatan komunitas, layanan publik, inisiatif digital, transformasi digital, masyarakat terhubung, masyarakat berdaya saing',
             'author' => null,
             'thumbnail' => null,
             'published_at' => null,
@@ -46,7 +46,7 @@ class BeritaController extends Controller
             // }
 
             $meta = [
-                'app_name' => "Dinas Komunikasi dan Informatika Lampung Selatan",
+                'app_name' => "{{getInfo()->title}} ",
                 'title' => $berita->title,
                 'description' => $berita->description,
                 'keywords' => $berita->tag,
@@ -105,8 +105,8 @@ class BeritaController extends Controller
             $meta = [
                 'app_name' => getInfo()->title,
                 'title' => 'Kategori Berita ' . $category_name,
-                'description' => 'Temukan berita terkini dan informasi terupdate seputar Lampung Selatan. Dapatkan liputan lengkap tentang berbagai kegiatan komunitas, layanan publik, dan inisiatif digital yang memajukan daerah ini. Mari bergabung dalam transformasi digital untuk menciptakan masyarakat yang terhubung dan berdaya saing tinggi',
-                'keywords' => 'berita Lampung Selatan, informasi terkini, kegiatan komunitas, layanan publik, inisiatif digital, transformasi digital, masyarakat terhubung, masyarakat berdaya saing',
+                'description' => 'Temukan berita terkini dan informasi terupdate seputar . Dapatkan liputan lengkap tentang berbagai kegiatan komunitas, layanan publik, dan inisiatif digital yang memajukan daerah ini. Mari bergabung dalam transformasi digital untuk menciptakan masyarakat yang terhubung dan berdaya saing tinggi',
+                'keywords' => 'berita , informasi terkini, kegiatan komunitas, layanan publik, inisiatif digital, transformasi digital, masyarakat terhubung, masyarakat berdaya saing',
                 'author' => null,
                 'thumbnail' => null,
                 'published_at' => null,
@@ -155,8 +155,8 @@ class BeritaController extends Controller
             $meta = [
                 'app_name' => getInfo()->title,
                 'title' => 'Arsip Berita ' . $bulan,
-                'description' => 'Temukan berita terkini dan informasi terupdate seputar Lampung Selatan. Dapatkan liputan lengkap tentang berbagai kegiatan komunitas, layanan publik, dan inisiatif digital yang memajukan daerah ini. Mari bergabung dalam transformasi digital untuk menciptakan masyarakat yang terhubung dan berdaya saing tinggi',
-                'keywords' => 'berita Lampung Selatan, informasi terkini, kegiatan komunitas, layanan publik, inisiatif digital, transformasi digital, masyarakat terhubung, masyarakat berdaya saing',
+                'description' => 'Temukan berita terkini dan informasi terupdate seputar . Dapatkan liputan lengkap tentang berbagai kegiatan komunitas, layanan publik, dan inisiatif digital yang memajukan daerah ini. Mari bergabung dalam transformasi digital untuk menciptakan masyarakat yang terhubung dan berdaya saing tinggi',
+                'keywords' => 'berita , informasi terkini, kegiatan komunitas, layanan publik, inisiatif digital, transformasi digital, masyarakat terhubung, masyarakat berdaya saing',
                 'author' => null,
                 'thumbnail' => null,
                 'published_at' => null,
@@ -198,8 +198,8 @@ class BeritaController extends Controller
             $meta = [
                 'app_name' => getInfo()->title,
                 'title' => 'Berita ' . $year,
-                'description' => 'Temukan berita terkini dan informasi terupdate seputar Lampung Selatan. Dapatkan liputan lengkap tentang berbagai kegiatan komunitas, layanan publik, dan inisiatif digital yang memajukan daerah ini. Mari bergabung dalam transformasi digital untuk menciptakan masyarakat yang terhubung dan berdaya saing tinggi',
-                'keywords' => 'berita Lampung Selatan, informasi terkini, kegiatan komunitas, layanan publik, inisiatif digital, transformasi digital, masyarakat terhubung, masyarakat berdaya saing',
+                'description' => 'Temukan berita terkini dan informasi terupdate seputar . Dapatkan liputan lengkap tentang berbagai kegiatan komunitas, layanan publik, dan inisiatif digital yang memajukan daerah ini. Mari bergabung dalam transformasi digital untuk menciptakan masyarakat yang terhubung dan berdaya saing tinggi',
+                'keywords' => 'berita , informasi terkini, kegiatan komunitas, layanan publik, inisiatif digital, transformasi digital, masyarakat terhubung, masyarakat berdaya saing',
                 'author' => null,
                 'thumbnail' => null,
                 'published_at' => null,
@@ -238,8 +238,8 @@ class BeritaController extends Controller
         $meta = [
             'app_name' => getInfo()->title,
             'title' => 'Search Berita',
-            'description' => 'Temukan berita terkini dan informasi terupdate seputar Lampung Selatan. Dapatkan liputan lengkap tentang berbagai kegiatan komunitas, layanan publik, dan inisiatif digital yang memajukan daerah ini. Mari bergabung dalam transformasi digital untuk menciptakan masyarakat yang terhubung dan berdaya saing tinggi',
-            'keywords' => 'berita Lampung Selatan, informasi terkini, kegiatan komunitas, layanan publik, inisiatif digital, transformasi digital, masyarakat terhubung, masyarakat berdaya saing',
+            'description' => 'Temukan berita terkini dan informasi terupdate seputar . Dapatkan liputan lengkap tentang berbagai kegiatan komunitas, layanan publik, dan inisiatif digital yang memajukan daerah ini. Mari bergabung dalam transformasi digital untuk menciptakan masyarakat yang terhubung dan berdaya saing tinggi',
+            'keywords' => 'berita , informasi terkini, kegiatan komunitas, layanan publik, inisiatif digital, transformasi digital, masyarakat terhubung, masyarakat berdaya saing',
             'author' => null,
             'thumbnail' => null,
             'published_at' => null,
@@ -279,8 +279,8 @@ class BeritaController extends Controller
         $meta = [
             'app_name' => getInfo()->title,
             'title' => 'Tag Berita ' . $tag,
-            'description' => 'Temukan berita terkini dan informasi terupdate seputar Lampung Selatan. Dapatkan liputan lengkap tentang berbagai kegiatan komunitas, layanan publik, dan inisiatif digital yang memajukan daerah ini. Mari bergabung dalam transformasi digital untuk menciptakan masyarakat yang terhubung dan berdaya saing tinggi',
-            'keywords' => 'berita Lampung Selatan, informasi terkini, kegiatan komunitas, layanan publik, inisiatif digital, transformasi digital, masyarakat terhubung, masyarakat berdaya saing',
+            'description' => 'Temukan berita terkini dan informasi terupdate seputar . Dapatkan liputan lengkap tentang berbagai kegiatan komunitas, layanan publik, dan inisiatif digital yang memajukan daerah ini. Mari bergabung dalam transformasi digital untuk menciptakan masyarakat yang terhubung dan berdaya saing tinggi',
+            'keywords' => 'berita , informasi terkini, kegiatan komunitas, layanan publik, inisiatif digital, transformasi digital, masyarakat terhubung, masyarakat berdaya saing',
             'author' => null,
             'thumbnail' => null,
             'published_at' => null,

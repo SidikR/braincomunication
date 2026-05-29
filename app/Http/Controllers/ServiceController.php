@@ -13,8 +13,8 @@ class ServiceController extends Controller
         $meta = [
             'app_name' => getInfo()->title,
             'title' => 'Layanan',
-            'description' => 'Dapatkan informasi lengkap tentang layanan yang disediakan oleh ' . getInfo()->title . ' di Lampung Selatan. Temukan berbagai layanan terkait teknologi informasi, komunikasi, dan digitalisasi yang tersedia untuk memajukan pelayanan publik dan meningkatkan konektivitas di daerah ini',
-            'keywords' => 'layanan ' . getInfo()->title . ', teknologi informasi, komunikasi digital, layanan publik, Lampung Selatan, digitalisasi, konektivitas, pelayanan terkini',
+            'description' => 'Dapatkan informasi lengkap tentang layanan yang disediakan oleh ' . getInfo()->title . ' di . Temukan berbagai layanan terkait teknologi informasi, komunikasi, dan digitalisasi yang tersedia untuk memajukan pelayanan publik dan meningkatkan konektivitas di daerah ini',
+            'keywords' => 'layanan ' . getInfo()->title . ', teknologi informasi, komunikasi digital, layanan publik, , digitalisasi, konektivitas, pelayanan terkini',
             'author' => null,
             'thumbnail' => null,
             'published_at' => null,

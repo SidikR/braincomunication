@@ -4,7 +4,7 @@
     <!--  Section Title -->
     <div class="container section-title" data-aos="fade-up">
         <h2>Program Apa Saja yang Dapat Dipilih?</h2>
-        {{-- <p>Berikut ini program yang ada di Dinas Komunikasi dan Informasi Lampung Selatan</p> --}}
+        {{-- <p>Berikut ini program yang ada di Dinas Komunikasi dan Informasi </p> --}}
     </div><!-- End Section Title -->
 
     <div class="container" data-aos="fade-up" data-aos-delay="100">

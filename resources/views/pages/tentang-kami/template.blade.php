@@ -7,7 +7,7 @@
             <div class="container">
                 <div class="container section-title detail mt-5 d-flex flex-column" data-aos="fade-up">
                     <h2 class="text-white">Tentang Kami</h2>
-                    <p class="text-white">Berikut ini tentang {{ $profilKami->title }}</p>
+                    <p class="text-white">Berikut ini tentang  {{ getInfo()->title }}</p>
                 </div>
             </div>
         </div>

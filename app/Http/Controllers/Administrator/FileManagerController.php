@@ -18,7 +18,7 @@ class FileManagerController extends Controller
 
     public function uploadSummernoteImage(Request $request)
     {
-        $request->validate(['file' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:5120']);
+        $request->validate(['file' => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:10120']);
         $path = $request->file('file')->store('summernote', 'public');
         return response()->json(['url' => asset('storage/' . $path)]);
     }

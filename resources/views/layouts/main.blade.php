@@ -9,9 +9,9 @@
     <meta name="title"
         content="{{ isset($meta['title']) ? $meta['title'] . ' | ' . getInfo()->title : getInfo()->title }} }}">
     <meta name="description"
-        content="{{ isset($meta['description']) ? $meta['description'] : 'Selamat datang di ' . getInfo()->title . ' Temukan informasi terkini tentang layanan publik, kegiatan komunitas, dan inisiatif digital kami untuk memajukan Lampung Selatan. Mari bergabung dalam transformasi digital kami untuk menciptakan masyarakat yang terhubung dan berdaya saing tinggi' }}">
+        content="{{ isset($meta['description']) ? $meta['description'] : 'Selamat datang di ' . getInfo()->title . ' Temukan informasi terkini tentang layanan publik, kegiatan komunitas, dan inisiatif digital kami untuk memajukan . Mari bergabung dalam transformasi digital kami untuk menciptakan masyarakat yang terhubung dan berdaya saing tinggi' }}">
     <meta name="keywords"
-        content="{{ isset($meta['keywords']) ? $meta['keywords'] . ',' . ' lampung, lampung selatan, dinas, opd, dinas komunikasi dan informatika, kominfo' : 'lampung, lampung selatan, dinas, opd, dinas komunikasi dan informatika, kominfo' }}">
+        content="{{ isset($meta['keywords']) ? $meta['keywords'] . ',' . ' lampung, , dinas, opd, kominfo' : 'lampung, dinas, opd, kominfo' }}">
     <meta name="author" content="{{ isset($meta['author']) ? $meta['author'] : getInfo()->title }}">
     <meta name="robots" content="index, follow">
     <meta name="revisit-after" content="1 days">
@@ -29,10 +29,10 @@
     {
       "@context": "http://schema.org",
       "@type": "Organization",
-      "name": "Dinas Komunikasi dan Informatika",
+      "name": "{{getInfo()->title}}",
       "url": "{{ url('/') }}",
       "logo": "{{ asset('assets/img/kominfo.png') }}",
-      "description": "Deskripsi singkat tentang Dinas Komunikasi dan Informatika"
+      "description": "Deskripsi singkat tentang {{getInfo()->title}}"
     }
     </script>
 
@@ -55,7 +55,7 @@
     <meta property="og:title"
         content="{{ isset($meta['title']) ? $meta['title'] . ' | ' . getInfo()->title : getInfo()->title }}" />
     <meta property="og:description"
-        content="{{ isset($meta['description']) ? $meta['description'] : 'Selamat datang di ' . getInfo()->title . ' Temukan informasi terkini tentang layanan publik, kegiatan komunitas, dan inisiatif digital kami untuk memajukan Lampung Selatan. Mari bergabung dalam transformasi digital kami untuk menciptakan masyarakat yang terhubung dan berdaya saing tinggi' }}" />
+        content="{{ isset($meta['description']) ? $meta['description'] : 'Selamat datang di ' . getInfo()->title . ' Temukan informasi terkini tentang layanan publik, kegiatan komunitas, dan inisiatif digital kami untuk memajukan . Mari bergabung dalam transformasi digital kami untuk menciptakan masyarakat yang terhubung dan berdaya saing tinggi' }}" />
     <meta property="og:image" content="{{ $meta['thumbnail'] ?? asset('assets/img/thumbnail.jpg') }}" />
 
     <!-- Twitter -->
@@ -64,7 +64,7 @@
     <meta property="twitter:title"
         content="{{ isset($meta['title']) ? $meta['title'] . ' | ' . getInfo()->title : getInfo()->title }}" />
     <meta property="twitter:description"
-        content="{{ isset($meta['description']) ? $meta['description'] : 'Selamat datang di ' . getInfo()->title . ' Temukan informasi terkini tentang layanan publik, kegiatan komunitas, dan inisiatif digital kami untuk memajukan Lampung Selatan. Mari bergabung dalam transformasi digital kami untuk menciptakan masyarakat yang terhubung dan berdaya saing tinggi' }}" />
+        content="{{ isset($meta['description']) ? $meta['description'] : 'Selamat datang di ' . getInfo()->title . ' Temukan informasi terkini tentang layanan publik, kegiatan komunitas, dan inisiatif digital kami untuk memajukan . Mari bergabung dalam transformasi digital kami untuk menciptakan masyarakat yang terhubung dan berdaya saing tinggi' }}" />
     <meta property="twitter:image" content="{{ $meta['thumbnail'] ?? asset('assets/img/thumbnail.jpg') }}" />
 
 

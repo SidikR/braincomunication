@@ -17,7 +17,7 @@
                     <div class="lapor-banner">
                         <img src="{{ asset('storage/lapor/KoO7ijWbXjd0KkuLjY5L.webp') }}" class="img-fluid rounded-3 "
                             alt="Lapor.go.id banner" loading="lazy">
-                        <span>Dinas Komunikasi dan Informatika</span>
+                        <span>{{getInfo()->title}}</span>
                     </div><!-- End Portfolio Item -->
                 </a>
 

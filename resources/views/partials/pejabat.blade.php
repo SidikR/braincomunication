@@ -4,8 +4,8 @@
     <!--  Section Title -->
     <div class="container section-title" data-aos="fade-up">
         <h2 class="text-white">Pejabat Dinas</h2>
-        <p class="text-white">Berikut ini pejabat pejabat dan karyawan di Dinas Komunikasi dan Informatika
-            Lampung Selatan</p>
+        <p class="text-white">Berikut ini pejabat pejabat dan karyawan di {{getInfo()->title}}
+            </p>
     </div><!-- End Section Title -->
 
     <div class="container">

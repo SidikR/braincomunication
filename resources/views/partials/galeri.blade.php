@@ -4,7 +4,7 @@
     <!--  Section Title -->
     <div class="container section-title" data-aos="fade-up">
         <h2>Galeri</h2>
-        <p>Setiap Momen yang ada di Dinas Komunikasi dan Informatika, ada di sini. Yuk Cek Langsung.!</p>
+        <p>Setiap Momen yang ada di {{getInfo()->title}}, ada di sini. Yuk Cek Langsung.!</p>
     </div>
     <!-- End Section Title -->
 

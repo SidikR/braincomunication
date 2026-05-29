@@ -7,7 +7,7 @@
             <div class="container">
                 <div class="container section-title detail mt-5 d-flex flex-column" data-aos="fade-up">
                     <h2 class="text-white">Pejabat</h2>
-                    <p class="text-white">Berikut ini pejabat yang ada di Dinas Komunikasi dan Informatika Lampung
+                    <p class="text-white">Berikut ini pejabat yang ada di {{getInfo()->title}} Lampung
                         Selatan</p>
                 </div>
             </div>
